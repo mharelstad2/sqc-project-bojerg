@@ -20,4 +20,6 @@ The 2001 guide for installing and using Debian.
 - Advanced Topics
 
 ## Proposed Layout
-![](layout.png "Proposed Layout")
+![](layout_mobile.png "Proposed mobile layout")
+![](layout_mobile_nav.png "Proposed mobile navigation layout")
+![](layout.png "Proposed desktop layout")
