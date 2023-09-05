@@ -20,3 +20,4 @@ The 2001 guide for installing and using Debian.
 - Advanced Topics
 
 ## Proposed Layout
+![](layout.png "Proposed Layout")
