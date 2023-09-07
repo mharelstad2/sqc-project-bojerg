@@ -1,0 +1,22 @@
+{
+  "name": "sqc-project-bojerg",
+  "version": "1.0.0",
+  "description": "Your given and family name.",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-validate": "^8.3.0",
+    "standard": "^17.1.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0"
+  }
+}
