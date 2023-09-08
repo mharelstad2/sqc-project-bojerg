@@ -1,3 +1,85 @@
+:root {
+  --debian-red: #cd0237;
+  --pale-gold: #cc9602;
+  --light-pink: #fff1f1;
+  --off-white: #fcfbf8;
+  --bg-dark-mode: #111111;
+  --bg-dark-mode-accent: #181818;
+}
+
+* { /* CSS reset https://www.freecodecamp.org/news/html-page-width-height/ */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: var(--light-pink);
+  min-height: 100vh;
+}
+
+header {
+  position: fixed;
+  padding-top: 12px;
+  background-color: var(--off-white);
+  height: 60px;
+  width: 100vw;
+  border-bottom: medium solid var(--debian-red);
+}
+
+h1 {
+  text-align: center;
+}
+
+h1, h2, h3, hr {
+  color: var(--debian-red);
+}
+
+.logo {
+  position: absolute;
+  height: 2em;
+  width: 2em;
+  top: 12px;
+  left: 1.5vw;	
+}
+
+.bars-icon {
+  position: absolute;
+  height: 2em;
+  width: 2em;
+  top: 12px;
+  right: 1.5vw;
+  
+}
+
+.nav-bars-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: auto;
+  width: 128px;
+  top: 48px;
+  right: 1.5vw;
+  border: medium solid var(--debian-red);
+  border-radius: 9px;
+  background-color: var(--off-white);
+  padding: 12px;
+  gap: 12px;
+}
+
+.content-div {
+  padding: 80px 10vw 0px 10vw;
+}
+
 .dark {
-  /* Dark mode stuff here */
+  background-color: var(--bg-dark-mode);
+  color: var(--off-white);
+}
+
+.dark-accent {
+  background-color: var(--bg-dark-mode-accent);
 }
