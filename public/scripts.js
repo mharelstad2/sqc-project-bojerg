@@ -1,4 +1,3 @@
-const $ = jQuery // reduces linting errors to 1
 $(document).ready(function () {
   $('.bars-icon').on('click', function () {
     $('.nav-bars-dropdown').toggle()
