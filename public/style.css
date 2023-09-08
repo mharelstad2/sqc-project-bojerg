@@ -3,7 +3,7 @@
   --pale-gold: #cc9602;
   --light-pink: #fff1f1;
   --off-white: #fcfbf8;
-  --bg-dark-mode: #111111;
+  --bg-dark-mode: #111;
   --bg-dark-mode-accent: #181818;
 }
 
@@ -14,7 +14,7 @@
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 body {
@@ -72,7 +72,7 @@ h1, h2, h3, hr {
 }
 
 .content-div {
-  padding: 80px 10vw 0px 10vw;
+  padding: 80px 10vw 0;
 }
 
 .dark {
@@ -82,4 +82,5 @@ h1, h2, h3, hr {
 
 .dark-accent {
   background-color: var(--bg-dark-mode-accent);
+  color: var(--off-white);
 }
