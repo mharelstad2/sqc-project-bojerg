@@ -6,6 +6,7 @@ The 2001 guide for installing and using Debian.
 
 ## Items of Interest
 - Chapters
+- Sections
 
 ## Proposed Layout
 ![](layout_mobile.png "Proposed mobile layout")
