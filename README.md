@@ -22,7 +22,7 @@ erDiagram
         title TEXT "Section title"
         number INT "Section number"
     }
-    element_type ||--o{ element : is
+    element_type ||--|{ element : is
     element_type {
         id SERIAL pk
         description TEXT "footnote, quote, paragraph, etc"
