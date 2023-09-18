@@ -8,16 +8,20 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate": "node tools/html-to-sql.js && psql -U postgres -f ./docs/generated-schema.sql",
+    "test": "standard \"**/*.js\" && stylelint \"**/*.css\" && html-validate \"public/**/*.html\""
   },
   "standard": {
-    "env": [ "jquery" ]
+    "env": [
+      "jquery"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "html-validate": "^8.3.0",
+    "node-html-parser": "^6.1.10",
     "standard": "^17.1.0",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0"
