@@ -1,4 +1,6 @@
 import { parse } from 'node-html-parser'
+import { closeSync, openSync, readFileSync, writeFileSync }
+  from 'node:fs'
 
 const dstPath = 'docs/generated-schema.sql'
 const src = readFileSync('data/book.html', 'utf8')
@@ -46,45 +48,43 @@ INSERT INTO chapter (title, number) VALUES
 const sqlInsertSection = `INSERT INTO section (chapter_id, title, number) VALUES`
 const sqlInsertElement = `INSERT INTO element (section_id, element_type_id, index, content) VALUES`
 
-// Utility function
-const extractBody = function (root, id, pruneChildrenSelector) {
-  const bodyNode = root.querySelector(`#${id} .divBody`)
-
-  if (pruneChildrenSelector) {
-    const children = bodyNode.querySelectorAll(pruneChildrenSelector)
-    children.forEach((child) => {
-      child.remove()
-    })
-  }
-
-  // The <img> tags point to the wrong directory, so we
-  // need to change them here.
-  bodyNode.querySelectorAll('img').forEach(
-    (image) => {
-      const oldSrc = image.getAttribute('src')
-      const oldSrcTokens = oldSrc.split('/')
-      const newSrc = `/images/book/${oldSrcTokens[oldSrcTokens.length - 1]}`
-      image.setAttribute('src', newSrc)
-    }
-  )
-
-  // Return HTML with the line endings normalized to Unix.
-  bodyNode.innerHTML = bodyNode.innerHTML.replaceAll('\r\n', '\n')
-  bodyNode.innerHTML = bodyNode.innerHTML.trim()
-  return bodyNode
-}
-
 let guide = domRoot.querySelectorAll('.chapter')
-
-//TODO filter down to relevant divs
-
 let chapters = []
+let collectDivs = false
+const startFlag = 'I. Guide'
+const stopFlag = 'II. Reference'
 
-domRoot.querySelectorAll('.chapter').forEach(
-  () => {
+guide.forEach(
+  (div) => {
+    let title = ''
+    let headers = div.querySelectorAll("h2, h3")
+    if(headers.length > 0) {
+      title = headers[0].innerText
+    }
+    if(title == stopFlag) {
+      collectDivs = false
+    } else if(collectDivs) { // collectDivs set to true at bottom of function
+
+      // Fix img paths
+      div.querySelectorAll('img').forEach(
+      (image) => {
+        const oldSrc = image.getAttribute('src')
+        const oldSrcTokens = oldSrc.split('/')
+        const newSrc = `/images/book/${oldSrcTokens[oldSrcTokens.length - 1]}`
+        image.setAttribute('src', newSrc)
+      }
+    )
+
+    div.innerHTML = div.innerHTML.replaceAll('\r\n', '\n')
+    div.innerHTML = div.innerHTML.trim()
+
     //TODO parse through html and add to chapters array as if it were the database
     //Adapt the utility function in here along
-    console.log("Zzz")
+
+    }
+
+    if(title == startFlag) {
+      collectDivs = true
+    }
   }
 )
-
