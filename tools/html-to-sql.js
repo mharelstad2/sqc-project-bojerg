@@ -94,7 +94,28 @@ bookParts.forEach(
 		chapterAndSection[1] = Number(chapterAndSection[1])
 	}
 	
+	// Add chapter to object if not exists
+	if(!chapters.hasOwnProperty(chapterAndSection[0])) {
+		chapters[chapterAndSection[0]] = {}
+		chapters[chapterAndSection[0]].title = title
+		chapters[chapterAndSection[0]].sections = {}
+	}
 	
+	// Add section to object (reminder, treating intro to chapter as section 0)
+	chapters[chapterAndSection[0]].sections[chapterAndSection[1]] = {}
+	chapters[chapterAndSection[0]].sections[chapterAndSection[1]].title = title
+	chapters[chapterAndSection[0]].sections[chapterAndSection[1]].parts = {}
+	
+	let elementCount = 1
+	div.childNodes.forEach(
+	  (e) => {
+		// Will need to determine element_type at a later date
+		
+		
+		
+		elementCount++
+	  }
+	)
 	
 
     }
@@ -104,3 +125,5 @@ bookParts.forEach(
     }
   }
 )
+
+console.log(chapters)
