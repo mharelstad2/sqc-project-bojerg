@@ -13,7 +13,6 @@ erDiagram
     chapter {
         id SERIAL pk
         title TEXT "Chapter title"
-        number INT "Chapter number"
     }
     section ||--|{ element : has
     section {
