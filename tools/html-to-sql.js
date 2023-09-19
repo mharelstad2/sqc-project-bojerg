@@ -137,8 +137,6 @@ bookParts.forEach(
   }
 )
 
-
-
 // Now, we need to insert our JavaScript object into a completed SQL statement
 // The insert statement for chapters was already started in sqlHeader
 const chapNums = Object.keys(chapters)
@@ -161,7 +159,7 @@ chapNums.forEach(
   (chapKey) => {
     const chapter = chapters[chapKey]
     const sectNums = Object.keys(chapter.sections)
-    if(first) {
+    if (first) {
       writeFileSync(fd, `('${chapKey}', '${chapter.sections[0].title}', '${sectNums[0]}')`)
       sectNums.slice(1).forEach(
         (sectKey) => {
@@ -170,7 +168,6 @@ chapNums.forEach(
       )
 
       first = false
-
     } else {
       sectNums.forEach(
         (sectKey) => {
@@ -195,7 +192,7 @@ chapNums.forEach(
       (sectKey) => {
         const section = chapter.sections[sectKey]
         const partIndicies = Object.keys(section.parts)
-        if(first) {
+        if (first) {
           writeFileSync(fd, `('${sectId}', '${section.parts[0].type_id}', '${partIndicies[0]}', '${section.parts[0].content}')`)
           partIndicies.slice(1).forEach(
             (i) => {
@@ -204,7 +201,6 @@ chapNums.forEach(
           )
 
           first = false
-
         } else {
           partIndicies.forEach(
             (i) => {
