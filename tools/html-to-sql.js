@@ -48,13 +48,16 @@ INSERT INTO chapter (title, number) VALUES
 const sqlInsertSection = `INSERT INTO section (chapter_id, title, number) VALUES`
 const sqlInsertElement = `INSERT INTO element (section_id, element_type_id, index, content) VALUES`
 
-let guide = domRoot.querySelectorAll('.chapter')
-let chapters = []
-let collectDivs = false
+// Breaking down the DOM of book.html
+let bookParts = domRoot.querySelectorAll('.chapter')
+let chapters = {}
+
+// Only want content from the Guide portion of the book
 const startFlag = 'I. Guide'
 const stopFlag = 'II. Reference'
+let collectDivs = false
 
-guide.forEach(
+bookParts.forEach(
   (div) => {
     let title = ''
     let headers = div.querySelectorAll("h2, h3")
@@ -64,7 +67,7 @@ guide.forEach(
     if(title == stopFlag) {
       collectDivs = false
     } else if(collectDivs) { // collectDivs set to true at bottom of function
-
+	  //Start collecting HTML and additional required data
       // Fix img paths
       div.querySelectorAll('img').forEach(
       (image) => {
@@ -78,8 +81,21 @@ guide.forEach(
     div.innerHTML = div.innerHTML.replaceAll('\r\n', '\n')
     div.innerHTML = div.innerHTML.trim()
 
-    //TODO parse through html and add to chapters array as if it were the database
-    //Adapt the utility function in here along
+    // Each h2/h3 tag has an anchor tab named something like chap01 or chap01.4 ...
+	// We split into two parts, chapter and section
+	const chapterAndSection = headers[0].querySelector('a').id.split('.')
+	
+	// remove the chap from the number 
+	chapterAndSection[0] = Number(chapterAndSection[0].substring(4))
+	
+	if(chapterAndSection.length == 1) {
+		chapterAndSection.push(0) //If no section listed, we are working with chapter intro
+	} else {
+		chapterAndSection[1] = Number(chapterAndSection[1])
+	}
+	
+	
+	
 
     }
 
