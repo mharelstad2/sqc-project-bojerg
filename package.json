@@ -10,7 +10,7 @@
   "scripts": {
     "generate": "node tools/html-to-sql.js && psql -U postgres -f ./docs/generated-schema.sql",
     "gen-no-sql": "node tools/html-to-sql.js",
-    "test": "standard \"**/*.js\" && stylelint \"**/*.css\" && html-validate \"public/**/*.html\""
+    "test": "standard \"**/*.js\" && stylelint \"**/*.css\" && html-validate \"public/**/*.html\" && ejslint \"views/**/*.ejs\""
   },
   "standard": {
     "env": [
@@ -21,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "ejs-lint": "^2.0.0",
     "html-validate": "^8.3.0",
     "node-html-parser": "^6.1.10",
     "standard": "^17.1.0",
@@ -28,6 +29,7 @@
     "stylelint-config-standard": "^34.0.0"
   },
   "dependencies": {
+    "ejs": "^3.1.9",
     "express": "^4.18.2"
   }
 }
